@@ -2,7 +2,7 @@ package by.teachmeskills.kirbut.hw9.util;
 
 public class StringUtils {
 
-    private static final int SPACE = 32;
+    private final static int SPACE = 32;
 
     /*
      * array - character array whose passed as a parameter
