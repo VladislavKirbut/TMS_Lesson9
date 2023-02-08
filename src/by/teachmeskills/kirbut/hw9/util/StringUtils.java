@@ -2,8 +2,6 @@ package by.teachmeskills.kirbut.hw9.util;
 
 public class StringUtils {
 
-    private final static int SPACE = 32;
-
     /*
      * array - character array whose passed as a parameter
      */
@@ -16,10 +14,8 @@ public class StringUtils {
      * array - character array whose passed as a parameter
      */
     public static void println(char[] array) {
-        for (int i = 0; i < array.length; i++)
-            System.out.print(array[i]);
-
-        System.out.print("\n");
+        print(array);
+        System.out.println();
     }
 
     /*
@@ -27,11 +23,9 @@ public class StringUtils {
      * SPACE - static final variable of space symbol
      */
     public static boolean isBlank(char[] array) {
-        if (array.length == 0)
-            return true;
 
         for (int i = 0; i < array.length; i++) {
-            if (array[i] != SPACE)
+            if (!Character.isWhitespace(array[i]))
                 return false;
         }
 
@@ -42,11 +36,8 @@ public class StringUtils {
      * array - character array whose passed as a parameter
      */
     public static boolean isRussian(char[] array) {
-        if (array.length == 0)
-            throw new IllegalArgumentException("Array is empty.");
-
         for (int i = 0; i < array.length; i++)
-            if ((array[i] != '®' && array[i] != '∏') && (array[i] < '¿' || array[i] > 'ˇ'))
+            if ((array[i] != '–Å' && array[i] != '—ë') && (array[i] < '–ê' || array[i] > '—è'))
                 return false;
 
         return true;
@@ -58,10 +49,7 @@ public class StringUtils {
      */
     public static boolean contains(char[] array, char[] subarray) {
         if (subarray.length > array.length)
-            throw new IllegalArgumentException("Subarray more then array. Elements don't match.");
-
-        if (array.length == 0)
-            throw new IllegalArgumentException("Array is empty.");
+            return false;
 
         for (int i = 0; i < array.length - 1; i++) {
             int countOfMatch = 0;
